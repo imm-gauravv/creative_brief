@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superface — Meta Creative Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1A1A2E;
+  --gold: #C4A265;
+  --cream: #F5F2EE;
+  --dark: #0D0D15;
+  --charcoal: #2A2A2A;
+  --text: #2D2D2D;
+  --muted: #7A7A7A;
+  --card: #FFFFFF;
+  --border: #E5E1DB;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.hero { background: var(--dark); color: #fff; padding: 80px 40px 64px; text-align: center; position: relative; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(196,162,101,0.08) 0%, transparent 60%); }
+.hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.hero-ey { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; line-height: 1.15; margin-bottom: 16px; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 14px; color: rgba(255,255,255,0.4); max-width: 480px; margin: 0 auto; }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 36px; }
+.sec { padding: 64px 0; border-bottom: 1px solid var(--border); }
+.sec:last-child { border-bottom: none; }
+.ey { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-weight: 600; }
+.stitle { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400; color: var(--navy); margin-bottom: 8px; }
+.sdesc { font-size: 13px; color: var(--muted); max-width: 560px; margin-bottom: 40px; line-height: 1.7; }
+
+/* ── CAROUSEL BLOCK ── */
+.carousel-block { margin-bottom: 56px; }
+.cb-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.cb-num { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cb-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--navy); }
+.cb-product { font-size: 12px; color: var(--muted); margin-bottom: 20px; margin-left: 44px; }
+.cb-product strong { color: var(--text); }
+
+.frames { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.frame { background: var(--card); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+.frame-vis { position: relative; aspect-ratio: 1/1; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.frame-label { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); color: var(--gold); font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; z-index: 2; }
+.frame-body { padding: 20px; }
+.frame-t { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.frame-desc { font-size: 12px; color: var(--muted); line-height: 1.65; }
+.frame-dir { margin-top: 10px; font-size: 11px; line-height: 1.6; }
+.frame-dir strong { color: var(--navy); }
+
+.ref-note { margin-top: 8px; font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: 0.3px; }
+
+/* BG themes for frame visuals */
+.vis-warm { background: radial-gradient(ellipse at 50% 50%, #E8DFD2 0%, #D4C9B8 50%, #C2B7A5 100%); }
+.vis-dark { background: radial-gradient(ellipse at 50% 50%, #2A2A2E 0%, #1A1A1E 50%, #0E0E12 100%); color: #fff; }
+.vis-cool { background: radial-gradient(ellipse at 50% 50%, #DAD5CE 0%, #C8C3BC 50%, #B5B0A9 100%); }
+.vis-navy { background: linear-gradient(170deg, #1A1A2E 0%, #0D0D15 100%); color: #fff; }
+.vis-stone { background: radial-gradient(ellipse at 50% 50%, #D5CEC4 0%, #C4BDB3 50%, #AEA89F 100%); }
+.vis-charcoal { background: radial-gradient(ellipse at 50% 50%, #3A3A3E 0%, #252528 50%, #151518 100%); color: #fff; }
+.vis-lifestyle { background: linear-gradient(135deg, #E8E2DA 0%, #DDD6CC 50%, #D0C9BF 100%); }
+.vis-editorial { background: linear-gradient(180deg, #1E1E22 0%, #141418 100%); color: #fff; }
+
+.vis-inner { text-align: center; padding: 24px; z-index: 1; position: relative; }
+.vis-inner .icon { font-size: 48px; margin-bottom: 12px; opacity: 0.2; }
+.vis-inner .label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; opacity: 0.5; }
+.vis-inner .big { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; margin-top: 4px; }
+
+/* ── VIDEO CARDS ── */
+.vid-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.vid-card { background: var(--card); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 300px 1fr; }
+.vid-vis { position: relative; display: flex; align-items: center; justify-content: center; min-height: 240px; }
+.vid-play { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.12); backdrop-filter: blur(6px); border: 2px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; z-index: 2; }
+.vid-play::after { content: ''; width: 0; height: 0; border-left: 14px solid rgba(255,255,255,0.85); border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 3px; }
+.vid-tag { position: absolute; top: 12px; left: 12px; background: var(--gold); color: var(--navy); font-size: 9px; font-weight: 700; padding: 3px 9px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
+.vid-dur { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.65); color: #fff; font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 500; }
+.vid-body { padding: 28px; }
+.vid-t { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.vid-hook { font-size: 12px; color: var(--gold); font-weight: 600; margin-bottom: 12px; font-style: italic; }
+.vid-desc { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+
+.sb { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.sbf { background: var(--navy); border-radius: 5px; padding: 8px 6px; text-align: center; }
+.sbf-t { font-size: 7px; color: var(--gold); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 3px; }
+.sbf-d { font-size: 8px; color: rgba(255,255,255,0.6); line-height: 1.35; }
+
+table.sp { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 12px; }
+table.sp th { text-align: left; background: var(--navy); color: var(--gold); padding: 5px 8px; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+table.sp td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+
+/* ── COPY BANK ── */
+.copy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.cc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.cc-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 6px; }
+.cc-h { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.cc-b { font-size: 12px; color: var(--muted); line-height: 1.65; }
+.cc-cta { margin-top: 8px; font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 0.8px; }
+
+/* ── ART DIR NOTES ── */
+.note-box { background: var(--navy); color: #fff; border-radius: 12px; padding: 28px; margin-top: 24px; }
+.note-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold); margin-bottom: 10px; }
+.note-box p { font-size: 12px; opacity: 0.6; line-height: 1.7; }
+.note-box ul { list-style: none; margin-top: 10px; }
+.note-box li { font-size: 12px; opacity: 0.7; line-height: 1.8; padding-left: 16px; position: relative; }
+.note-box li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 8px; top: 2px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.tag { font-size: 9px; padding: 3px 9px; border-radius: 16px; background: rgba(196,162,101,0.08); color: var(--gold); font-weight: 600; border: 1px solid rgba(196,162,101,0.12); }
+
+@media (max-width: 900px) {
+  .frames { grid-template-columns: 1fr; }
+  .vid-card { grid-template-columns: 1fr; }
+  .vid-vis { min-height: 200px; }
+}
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; }
+  .wrap { padding: 0 18px; }
+  .sb { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-ey">Superface × Meta Ads</div>
+    <h1>Performance Marketing<br><em>Creative Brief</em></h1>
+    <div class="hero-sub">3 Carousel Ads · 3 Video Briefs · Ad Copy Bank · Art Direction Notes</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- STYLE REFERENCES                       -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec">
+  <div class="ey">Visual Direction</div>
+  <div class="stitle">Photography & Art Direction</div>
+  <div class="sdesc">Dark charcoal marble jars, silver spatulas, squared matte-black glass dropper. Every image should feel editorial — clean, minimal, studio-lit. Think Bynacht × Aesop × Sulwhasoo.</div>
+
+  <div class="note-box">
+    <h4>Shoot Direction for All Carousel Frames</h4>
+    <p>The Superface packaging is dark and sculptural. It needs backgrounds that create contrast, not compete. No flat white. No busy styling.</p>
+    <ul>
+      <li><strong>Frame 1 (Product Hero):</strong> Single product, center frame, solid matte background. Warm sandstone for the serum. Cool grey concrete for the Elixir. Deep charcoal gradient for the 24K cream. One texture element only (cream swatch / serum drop / water mist).</li>
+      <li><strong>Frame 2 (In Use):</strong> Model applying product — close crop on face/hands. Clean skin, natural dewy finish. Shot tight. No distracting backgrounds. Soft directional light. Can be UGC-style (phone-shot aesthetic) or editorial (studio beauty light).</li>
+      <li><strong>Frame 3 (Benefits):</strong> Text-forward on solid dark or light background. Minimal typography — Cormorant Garamond for headlines, DM Sans for body. Max 3 benefit lines. One subtle product element in corner or bottom. Let the words breathe.</li>
+      <li><strong>Never:</strong> Pricing on creative. Cluttered layouts. Gradients as background. Stock imagery. Flat white backgrounds. Multiple products in one frame (unless trio hero).</li>
+      <li><strong>Always:</strong> Show texture (cream swatch, serum drop, micro-beads). Include the silver spatula in cream shots. Maintain the dark-luxury-meets-clinical tone.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:20px; font-size:12px; color:var(--muted); line-height:1.7;">
+    <strong style="color:var(--navy);">Brand Reference Board:</strong> Look at Bynacht (dark packaging, moody studio shots), Aesop (clean minimal product photography, warm tones), Sulwhasoo (Korean luxury, model application shots), Tom Ford Beauty (dark editorial, black packaging pops). The reference images shown above in chat give you the exact tone — clean studio, sculptural product, no clutter.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- CAROUSEL 1: VITALITY DROPS             -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec">
+  <div class="ey">Carousel Ads</div>
+  <div class="stitle">Three Products, Three Stories</div>
+  <div class="sdesc">Each carousel = one product, three frames. Frame 1: product hero. Frame 2: someone using it. Frame 3: key benefits. All 1080×1080px.</div>
+
+  <!-- CAROUSEL 1 -->
+  <div class="carousel-block">
+    <div class="cb-head">
+      <div class="cb-num">1</div>
+      <div class="cb-title">Volupeptinol™ Repair & Firming Vitality Drops</div>
+    </div>
+    <div class="cb-product"><strong>Product:</strong> Squared matte-black glass bottle, black dropper cap, golden/amber serum · <strong>Funnel:</strong> Cold Prospecting</div>
+
+    <div class="frames">
+      <!-- Frame 1 -->
+      <div class="frame">
+        <div class="frame-vis vis-warm">
+          <div class="frame-label">Frame 1</div>
+          <div class="vis-inner">
+            <div class="icon">◼</div>
+            <div class="label">Product Hero</div>
+            <div class="big">The Bottle</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Product Hero — Warm Stone</div>
+          <div class="frame-desc">Matte-black squared bottle centered on warm sandstone surface. One golden serum droplet falling from the dropper — captured mid-air. Soft directional light from camera-left creating a gentle shadow. Serum smear swatch behind the bottle as texture element.</div>
+          <div class="frame-dir">
+            <strong>Background:</strong> Warm travertine / sandstone (#D4C9B8)<br>
+            <strong>Lighting:</strong> Soft side light, warm tone<br>
+            <strong>Props:</strong> Serum drop mid-air, small golden swatch<br>
+            <strong>Text overlay:</strong> "Volupeptinol™ Vitality Drops" — bottom center, small, elegant
+          </div>
+          <div class="ref-note">↗ Ref: Aesop product range photography — single product, warm surface, clean shadow</div>
+        </div>
+      </div>
+
+      <!-- Frame 2 -->
+      <div class="frame">
+        <div class="frame-vis vis-lifestyle">
+          <div class="frame-label">Frame 2</div>
+          <div class="vis-inner" style="color:var(--navy);">
+            <div class="icon">👤</div>
+            <div class="label">In Use</div>
+            <div class="big">The Application</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Application Shot — Serum Drops on Face</div>
+          <div class="frame-desc">Close crop of a model's face (from chin to forehead). Fingertips pressing golden serum drops into cheek. Dewy, glass-skin finish visible. Eyes closed, relaxed expression. The dropper bottle out of focus in the bottom corner.</div>
+          <div class="frame-dir">
+            <strong>Model direction:</strong> Clean skin, no heavy makeup, dewy finish<br>
+            <strong>Crop:</strong> Tight — face fills 80% of frame<br>
+            <strong>Lighting:</strong> Beauty ring light or soft overhead<br>
+            <strong>Text overlay:</strong> "2 drops. 60 seconds. That's it." — bottom left
+          </div>
+          <div class="ref-note">↗ Ref: Sulwhasoo First Care Activating Serum campaign — model with serum drops, glowing skin</div>
+        </div>
+      </div>
+
+      <!-- Frame 3 -->
+      <div class="frame">
+        <div class="frame-vis vis-navy">
+          <div class="frame-label">Frame 3</div>
+          <div class="vis-inner">
+            <div class="label">Benefits</div>
+            <div class="big" style="margin-top:8px; font-size:18px; color:var(--gold);">Peptides ✦ Retinal ✦ Volufiline</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Benefits — Text-Forward</div>
+          <div class="frame-desc">Dark navy background. Clean typography, max 3 benefit lines with icons or minimal separators. Small product silhouette in bottom-right corner. This is a "read" frame — let the words do the work.</div>
+          <div class="frame-dir">
+            <strong>Background:</strong> Solid navy (#1A1A2E)<br>
+            <strong>Layout:</strong><br>
+            ✦ Firms & lifts (Peptide complex)<br>
+            ✦ Renews skin cells 11× faster (Encapsulated Retinal)<br>
+            ✦ Plumps from within (Volufiline)<br><br>
+            <strong>Bottom:</strong> "Clinically proven. 100% saw improvement." + Superface wordmark<br>
+            <strong>CTA button:</strong> "Shop Now" in gold
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL 2 -->
+  <div class="carousel-block">
+    <div class="cb-head">
+      <div class="cb-num">2</div>
+      <div class="cb-title">Micro-Spicules 24K Golden Alchemy Regenerating Cream</div>
+    </div>
+    <div class="cb-product"><strong>Product:</strong> Dark marble jar, silver ball spatula, thick ivory cream with gold shimmer · <strong>Funnel:</strong> Interest-based (K-beauty, anti-aging)</div>
+
+    <div class="frames">
+      <!-- Frame 1 -->
+      <div class="frame">
+        <div class="frame-vis vis-charcoal">
+          <div class="frame-label">Frame 1</div>
+          <div class="vis-inner">
+            <div class="icon">⬤</div>
+            <div class="label">Product Hero</div>
+            <div class="big">The Jar</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Product Hero — Dark Gradient</div>
+          <div class="frame-desc">Dark marble jar with lid slightly off, silver spatula resting across the top. Overhead spotlight so the cream inside catches light — the 24K gold flakes should shimmer. A thick cream swatch floating to the side, showing the rich texture. Dark-on-dark, with the gold catching all the attention.</div>
+          <div class="frame-dir">
+            <strong>Background:</strong> Deep charcoal gradient (#2A2A2E → #0E0E12)<br>
+            <strong>Lighting:</strong> Single overhead spotlight, tight beam<br>
+            <strong>Props:</strong> Lid ajar, spatula across top, cream swatch to right<br>
+            <strong>Text overlay:</strong> "24K Golden Alchemy" — top left, small
+          </div>
+          <div class="ref-note">↗ Ref: Bynacht Glass Skin Cream — dark packaging, moody spotlight, editorial feel</div>
+        </div>
+      </div>
+
+      <!-- Frame 2 -->
+      <div class="frame">
+        <div class="frame-vis vis-stone">
+          <div class="frame-label">Frame 2</div>
+          <div class="vis-inner" style="color:var(--navy);">
+            <div class="icon">👤</div>
+            <div class="label">In Use</div>
+            <div class="big">The Spatula Ritual</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Application Shot — Spatula to Skin</div>
+          <div class="frame-desc">Close-up of model scooping cream from jar with the silver ball spatula, then applying to cheek/jawline. The cream's thick, luxurious texture visible on skin. Show the ritual: not fingers, the spatula. This is a differentiator — it signals luxury and hygiene.</div>
+          <div class="frame-dir">
+            <strong>Model direction:</strong> Focus on hands + jawline, can crop out eyes<br>
+            <strong>Key moment:</strong> Spatula touching skin, cream melting<br>
+            <strong>Lighting:</strong> Warm directional, golden hour tone<br>
+            <strong>Text overlay:</strong> "The ritual, not just the routine." — bottom
+          </div>
+          <div class="ref-note">↗ Ref: Sulwhasoo Concentrated Ginseng — spatula application, close crop, warm tones</div>
+        </div>
+      </div>
+
+      <!-- Frame 3 -->
+      <div class="frame">
+        <div class="frame-vis vis-dark">
+          <div class="frame-label">Frame 3</div>
+          <div class="vis-inner">
+            <div class="label">Benefits</div>
+            <div class="big" style="margin-top:8px; font-size:18px; color:var(--gold);">Micro-Spicules ✦ 24K Gold ✦ Cica</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Benefits — Text-Forward</div>
+          <div class="frame-desc">Dark background with clean gold typography. The Shorticule® technology is the hero here — "2× shorter, 1.5× smaller than standard spicules" is a powerful claim. Small jar silhouette bottom-right.</div>
+          <div class="frame-dir">
+            <strong>Background:</strong> Solid dark (#0E0E12)<br>
+            <strong>Layout:</strong><br>
+            ✦ Patented Shorticule® micro-spicules (2× shorter, zero irritation)<br>
+            ✦ Real 24K gold for luminosity & radiance<br>
+            ✦ Cica + Hyaluronic Acid coating for skin barrier<br><br>
+            <strong>Bottom:</strong> "Patented technology. Made in Korea." + Superface wordmark<br>
+            <strong>CTA button:</strong> "Discover" in gold
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL 3 -->
+  <div class="carousel-block">
+    <div class="cb-head">
+      <div class="cb-num">3</div>
+      <div class="cb-title">Micro Droplet Volupeptinol™ Time Rewinding Elixir Cream</div>
+    </div>
+    <div class="cb-product"><strong>Product:</strong> Dark marble jar with swirled charcoal finish, silver ball spatula, micro-bead texture cream · <strong>Funnel:</strong> Warm Retarget</div>
+
+    <div class="frames">
+      <!-- Frame 1 -->
+      <div class="frame">
+        <div class="frame-vis vis-cool">
+          <div class="frame-label">Frame 1</div>
+          <div class="vis-inner" style="color:var(--navy);">
+            <div class="icon">⬤</div>
+            <div class="label">Product Hero</div>
+            <div class="big">The Elixir</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Product Hero — Cool Concrete</div>
+          <div class="frame-desc">Dark marble jar on cool grey concrete surface. Lid off to the side, silver spatula scooping out the micro-bead cream — the tiny capsule beads should be visible. Fine water mist in the air to reference the "micro droplet" concept. Clean, clinical, precise.</div>
+          <div class="frame-dir">
+            <strong>Background:</strong> Cool grey plaster / concrete (#C8C3BC)<br>
+            <strong>Lighting:</strong> Soft diffused overhead, slightly cool temperature<br>
+            <strong>Props:</strong> Fine water mist, spatula mid-scoop, beads visible<br>
+            <strong>Text overlay:</strong> "Time Rewinding Elixir" — bottom center, small
+          </div>
+          <div class="ref-note">↗ Ref: Aesop Reverence hand wash — product on stone surface, overhead diffused light</div>
+        </div>
+      </div>
+
+      <!-- Frame 2 -->
+      <div class="frame">
+        <div class="frame-vis vis-lifestyle">
+          <div class="frame-label">Frame 2</div>
+          <div class="vis-inner" style="color:var(--navy);">
+            <div class="icon">👤</div>
+            <div class="label">In Use</div>
+            <div class="big">The Transformation</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Application Shot — Micro-Beads Melting</div>
+          <div class="frame-desc">Extreme close-up of cream being pressed onto skin — the micro-bead capsules melting and releasing on contact. This is the hero texture moment. Can also show before/during: spatula lifts cream showing beads → beads dissolve on cheek. The "3,000+ micro-droplets per application" claim comes alive visually.</div>
+          <div class="frame-dir">
+            <strong>Key moment:</strong> Beads visible → beads melting into skin<br>
+            <strong>Crop:</strong> Super tight, macro lens quality<br>
+            <strong>Lighting:</strong> Soft, shows bead texture detail<br>
+            <strong>Text overlay:</strong> "3,000+ micro-droplets per application" — bottom
+          </div>
+          <div class="ref-note">↗ Ref: ASMR skincare texture content — macro cream texture shots, beads dissolving</div>
+        </div>
+      </div>
+
+      <!-- Frame 3 -->
+      <div class="frame">
+        <div class="frame-vis vis-editorial">
+          <div class="frame-label">Frame 3</div>
+          <div class="vis-inner">
+            <div class="label">Benefits</div>
+            <div class="big" style="margin-top:8px; font-size:18px; color:var(--gold);">100% Saw Improvement</div>
+          </div>
+        </div>
+        <div class="frame-body">
+          <div class="frame-t">Benefits — Clinical Proof</div>
+          <div class="frame-desc">This frame leans into the clinical study data — it's the most powerful proof point. Dark editorial background. Large "100%" stat as the visual anchor, with supporting details below. Small jar in bottom corner.</div>
+          <div class="frame-dir">
+            <strong>Background:</strong> Deep dark (#141418)<br>
+            <strong>Layout:</strong><br>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--gold);">100%</span> saw visible improvement<br>
+            −10.75% eye wrinkle depth in 2 weeks<br>
+            Clinical study: 21 Korean women, avg. age 51.2<br><br>
+            <strong>Bottom:</strong> "Clinically proven. Lab-tested in Korea." + Superface wordmark<br>
+            <strong>CTA button:</strong> "See the Evidence" in gold
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- VIDEO BRIEFS                           -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec">
+  <div class="ey">Video Briefs</div>
+  <div class="stitle">Three Concepts</div>
+  <div class="sdesc">Product textures, clinical proof, and founder story. All shot to match the dark-luxury studio aesthetic.</div>
+
+  <div class="vid-grid">
+
+    <!-- Video 1 -->
+    <div class="vid-card">
+      <div class="vid-vis vis-charcoal">
+        <div class="vid-play"></div>
+        <div class="vid-tag">Reel · Story</div>
+        <div class="vid-dur">0:15</div>
+      </div>
+      <div class="vid-body">
+        <div class="vid-t">Video 1: "The 60-Second Ritual"</div>
+        <div class="vid-hook">"Your entire skincare routine should take 60 seconds. Here's ours."</div>
+        <div class="vid-desc">ASMR-style product demo. Close-ups of the black glass dropper dispensing golden serum, the silver spatula scooping from the dark marble jar, micro-beads melting on skin. Shot on warm stone (serum) transitioning to dark reflective surface (cream). Macro lens. Satisfying textures. No talking — text overlays + ambient sound.</div>
+        <table class="sp">
+          <tr><th>Spec</th><th>Detail</th></tr>
+          <tr><td>Format</td><td>9:16 vertical (1080×1920)</td></tr>
+          <tr><td>Duration</td><td>15s main + 6s cut-down</td></tr>
+          <tr><td>Style</td><td>ASMR macro · product textures · no voiceover</td></tr>
+          <tr><td>Lighting</td><td>Warm side light → cool overhead transition</td></tr>
+          <tr><td>Audio</td><td>Ambient sounds (dropper click, cream glide) or trending audio</td></tr>
+          <tr><td>End card</td><td>Superface wordmark + "Start your ritual" + swipe-up CTA</td></tr>
+        </table>
+        <div class="sb">
+          <div class="sbf"><div class="sbf-t">0:00–0:02</div><div class="sbf-d">HOOK: "Your routine is too long." Fast sweep of 10 products off surface. Camera settles on 2.</div></div>
+          <div class="sbf"><div class="sbf-t">0:02–0:06</div><div class="sbf-d">STEP 1: Dropper click, golden serum falls in slow-mo. Fingertips press into cheek. "Step 1: Drops"</div></div>
+          <div class="sbf"><div class="sbf-t">0:06–0:11</div><div class="sbf-d">STEP 2: Silver spatula scoops from dark jar. Cream melts on skin. Beads visible. "Step 2: Cream"</div></div>
+          <div class="sbf"><div class="sbf-t">0:11–0:15</div><div class="sbf-d">RESULT: Dewy glass-skin glow. Both products side by side. "Minimal steps. Maximal care."</div></div>
+        </div>
+        <div class="ref-note" style="margin-top:12px;">↗ Ref: ASMR skincare texture reels (cream scoops, serum drops) — @pearlssthetic style</div>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="vid-card">
+      <div class="vid-vis vis-navy">
+        <div class="vid-play"></div>
+        <div class="vid-tag">In-Feed</div>
+        <div class="vid-dur">0:30</div>
+      </div>
+      <div class="vid-body">
+        <div class="vid-t">Video 2: "100% Saw Results"</div>
+        <div class="vid-hook">"We tested our products on 21 women for 2 weeks. Here's what happened."</div>
+        <div class="vid-desc">Data-driven proof video. Kinetic typography animating clinical stats, intercut with studio product shots — the dark jars under a single spotlight, golden serum dripping in slow motion, spatula scooping cream. Each stat builds on the last. Satisfying number animations. Ends with trio hero shot on black glass surface.</div>
+        <table class="sp">
+          <tr><th>Spec</th><th>Detail</th></tr>
+          <tr><td>Format</td><td>1:1 (1080×1080) + 9:16 cut</td></tr>
+          <tr><td>Duration</td><td>30s</td></tr>
+          <tr><td>Style</td><td>Kinetic typography × studio product B-roll</td></tr>
+          <tr><td>Lighting</td><td>Single spotlight on dark reflective surface</td></tr>
+          <tr><td>Audio</td><td>Elegant piano / strings build — grows with stats</td></tr>
+          <tr><td>End card</td><td>All 3 products hero + "Clinically proven Korean skincare" + CTA</td></tr>
+        </table>
+        <div class="sb">
+          <div class="sbf"><div class="sbf-t">0:00–0:03</div><div class="sbf-d">HOOK: "We tested this on real women." Dark jar lid being removed — spotlight catches the cream inside</div></div>
+          <div class="sbf"><div class="sbf-t">0:03–0:12</div><div class="sbf-d">STATS cascade: "100% improvement" → "−10.75% wrinkle depth" → "2 weeks" with product texture cuts between each</div></div>
+          <div class="sbf"><div class="sbf-t">0:12–0:22</div><div class="sbf-d">INGREDIENTS: Golden serum slow-mo, cream swatch, 24K gold shimmer macro, spatula + beads. Each named on screen</div></div>
+          <div class="sbf"><div class="sbf-t">0:22–0:30</div><div class="sbf-d">CLOSE: Trio on black glass. Rim light halo. "Clinically proven. Made in Korea." Superface logo + CTA</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="vid-card">
+      <div class="vid-vis" style="background: linear-gradient(145deg, #1A1A2E 0%, #2A1E0E 50%, #0D0D15 100%);">
+        <div class="vid-play"></div>
+        <div class="vid-tag">Reel</div>
+        <div class="vid-dur">0:20</div>
+      </div>
+      <div class="vid-body">
+        <div class="vid-t">Video 3: "Created by Artists"</div>
+        <div class="vid-hook">"A TV director and her artist daughter built a skincare brand the industry didn't expect."</div>
+        <div class="vid-desc">Founder story for cold audiences. Fast cuts between creative process (Seoul lab, art studio, product formulation) and beauty shots of the dark marble packaging. The narrative arc: art → science → product → result. Can be voiceover or text-overlay only. Emotional, aspirational, ends with product.</div>
+        <table class="sp">
+          <tr><th>Spec</th><th>Detail</th></tr>
+          <tr><td>Format</td><td>9:16 vertical (1080×1920)</td></tr>
+          <tr><td>Duration</td><td>20s (with 15s & 6s cuts)</td></tr>
+          <tr><td>Style</td><td>Cinematic brand film · fast cuts · warm + cool tones</td></tr>
+          <tr><td>Lighting</td><td>Natural (studio) → controlled spotlight (product)</td></tr>
+          <tr><td>Audio</td><td>Emotive Korean-inspired ambient or trending voiceover</td></tr>
+          <tr><td>End card</td><td>"Created by artists. Proven by science." + Superface + CTA</td></tr>
+        </table>
+        <div class="sb">
+          <div class="sbf"><div class="sbf-t">0:00–0:03</div><div class="sbf-d">HOOK: "A director. An artist. A mother. A daughter." Quick-cut portraits, studio, Seoul street</div></div>
+          <div class="sbf"><div class="sbf-t">0:03–0:08</div><div class="sbf-d">"They didn't follow rules." Hands mixing ingredients, painting, lab work, formulation close-ups</div></div>
+          <div class="sbf"><div class="sbf-t">0:08–0:15</div><div class="sbf-d">"They made skincare like art." Product ritual: golden serum drop, spatula scoop, glass-skin result</div></div>
+          <div class="sbf"><div class="sbf-t">0:15–0:20</div><div class="sbf-d">"Created by artists. Proven by science." Trio shot + Superface logo + CTA</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- AD COPY                                -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec">
+  <div class="ey">Ad Copy Bank</div>
+  <div class="stitle">Meta Ad Copy — Ready to Use</div>
+  <div class="sdesc">Primary text, headlines, and descriptions for each creative. Plug directly into Ads Manager.</div>
+
+  <div class="copy-grid">
+    <div class="cc">
+      <div class="cc-l">Carousel 1 — Vitality Drops</div>
+      <div class="cc-h">Primary Text</div>
+      <div class="cc-b">Your skin doesn't need 10 steps. It needs the right 2.<br><br>Volupeptinol™ Vitality Drops combine Peptides, Encapsulated Retinal, and Volufiline in one potent serum. Two drops. Sixty seconds. That's the whole ritual.<br><br>Clinically proven: 100% of participants saw visible improvement in 2 weeks.</div>
+      <div class="cc-cta">Headline: "The Only Serum Your Skin Needs" · CTA: Shop Now</div>
+    </div>
+    <div class="cc">
+      <div class="cc-l">Carousel 2 — 24K Golden Alchemy</div>
+      <div class="cc-h">Primary Text</div>
+      <div class="cc-b">This isn't decorative gold. It's functional.<br><br>Our 24K Golden Alchemy Cream uses patented Shorticule® micro-spicules — 2× shorter, 1.5× smaller than standard — coated with Cica and Hyaluronic Acid for zero irritation. Real 24K gold for luminosity.<br><br>Applied with a precision silver spatula. Because this is a ritual, not a routine.</div>
+      <div class="cc-cta">Headline: "Patented Technology. Real 24K Gold." · CTA: Discover</div>
+    </div>
+    <div class="cc">
+      <div class="cc-l">Carousel 3 — Time Rewinding Elixir</div>
+      <div class="cc-h">Primary Text</div>
+      <div class="cc-b">3,000+ micro-droplets of Volupeptinol™ per application.<br><br>Each capsule bead melts on contact, releasing concentrated active ingredients exactly where your skin needs them. Not a cream. An elixir.<br><br>Clinical study: 21 Korean women, avg. age 51.2. 100% saw improvement. −10.75% eye wrinkle depth in 2 weeks.</div>
+      <div class="cc-cta">Headline: "3,000+ Micro-Droplets Per Application" · CTA: See Evidence</div>
+    </div>
+    <div class="cc">
+      <div class="cc-l">Video 1 — 60-Second Ritual</div>
+      <div class="cc-h">Primary Text</div>
+      <div class="cc-b">60 seconds. 2 products. Results you can see in 2 weeks.<br><br>Step 1: Volupeptinol™ Drops — peptides + retinal + volufiline<br>Step 2: Choose your cream — 24K Gold or Time Rewinding Elixir<br><br>That's it. That's the whole ritual. Minimal steps. Maximal care. 🇰🇷</div>
+      <div class="cc-cta">Headline: "Your Entire Routine in 60 Seconds" · CTA: Shop Now</div>
+    </div>
+    <div class="cc">
+      <div class="cc-l">Video 2 — 100% Results</div>
+      <div class="cc-h">Primary Text</div>
+      <div class="cc-b">100% of clinical study participants saw visible improvement.<br><br>Not "up to 90%" with fine print. One hundred percent.<br><br>Our Volupeptinol™ complex was lab-developed in Korea to deliver anti-aging results that are measurable, not just marketable.<br><br>See the evidence. Then decide.</div>
+      <div class="cc-cta">Headline: "100% Saw Results. Zero Exceptions." · CTA: Learn More</div>
+    </div>
+    <div class="cc">
+      <div class="cc-l">Video 3 — Founder Story</div>
+      <div class="cc-h">Primary Text</div>
+      <div class="cc-b">A mother who directs TV commercials. A daughter who trained at NYU Tisch.<br><br>Together, they asked: what if skincare was made like art? Not mass-produced formulas. A ritual — thoughtful, precise, deeply personal.<br><br>Superface. Created by artists. Proven by science.</div>
+      <div class="cc-cta">Headline: "Created by Artists. Proven by Science." · CTA: Discover</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div style="background: var(--dark); color: rgba(255,255,255,0.25); text-align: center; padding: 32px; font-size: 10px; letter-spacing: 1.5px;">
+  SUPERFACE × META PERFORMANCE MARKETING · CREATIVE BRIEF · FEBRUARY 2026 · CONFIDENTIAL
+</div>
+
+</body>
+</html>
